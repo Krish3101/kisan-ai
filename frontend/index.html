@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KisanAI - Smart Farming Assistant</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Chart.js for graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <div class="main-wrap">
+
+    <!-- Sidebar (Desktop) -->
+    <nav class="sidebar-nav" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-text">🌾 KisanAI</div>
+      </div>
+
+      <div class="sidebar-links">
+        <a href="#" class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+          </svg>
+          <span class="sidebar-text">Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-page="crops" onclick="showPage('crops')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+          </svg>
+          <span class="sidebar-text">My Crops</span>
+        </a>
+        <a href="#" class="nav-item" data-page="finances" onclick="showPage('finances')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="sidebar-text">Finances</span>
+        </a>
+        <a href="#" class="nav-item" data-page="soil" onclick="showPage('soil')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 20h16a2 2 0 0 0 2-2V8l-4-4H6L2 8v10a2 2 0 0 0 2 2Z" />
+          </svg>
+          <span class="sidebar-text">Soil Health</span>
+        </a>
+        <a href="#" class="nav-item" data-page="weather" onclick="showPage('weather')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+          </svg>
+          <span class="sidebar-text">Weather</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="content-wrapper">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-title">Dashboard</div>
+        <div class="flex items-center gap-4">
+          <button class="mobile-nav-toggle" onclick="toggleSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" style="width: 24px; height: 24px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="content">
+
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page">
+          <div class="dashboard-grid">
+            <!-- Weather Card -->
+            <div class="card">
+              <div class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" style="width: 24px; height: 24px;">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+                </svg>
+                Weather Forecast
+              </div>
+              <div id="dash-weather" class="text-muted">Loading weather...</div>
+            </div>
+
+            <!-- Market Price Card -->
+            <div class="card">
+              <div class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" style="width: 24px; height: 24px;">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                </svg>
+                Market Prices
+              </div>
+              <div id="dash-price" class="text-muted">Loading prices...</div>
+            </div>
+
+            <!-- Financial Summary -->
+            <div class="card">
+              <div class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" style="width: 24px; height: 24px;">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Financial Overview
+              </div>
+              <div id="snapshot" class="grid grid-cols-2 gap-2">Loading financials...</div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="card">
+              <div class="card-title">Quick Actions</div>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="showPage('crops')">Add Crop</button>
+                <button class="btn btn-secondary" onclick="showPage('finances')">Add Expense</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommendation Box -->
+          <div class="card mt-4">
+            <div class="card-title">💡 Smart Recommendation</div>
+            <div id="rec-box" class="text-sm text-slate-700 dark:text-slate-300">
+              Loading recommendations...
+            </div>
+          </div>
+        </div>
+
+        <!-- Crops Page -->
+        <div id="crops" class="page hidden">
+          <div class="card">
+            <div class="card-title">My Crops</div>
+            <div class="input-group">
+              <input type="text" id="crop-name" class="input-field mb-4" placeholder="Crop Name (e.g. Wheat)">
+              <input type="text" id="crop-plot" class="input-field mb-4" placeholder="Plot Name (e.g. Field A)">
+              <button class="btn btn-primary w-full" onclick="addCrop()">Add Crop</button>
+            </div>
+            <div id="crop-list" class="dashboard-grid">
+              <!-- Crop items will appear here -->
+            </div>
+            <div class="empty-state text-center text-muted hidden">No crops added yet.</div>
+          </div>
+        </div>
+
+        <!-- Finances Page -->
+        <div id="finances" class="page hidden">
+          <div class="finances-grid">
+            <div class="card">
+              <div class="card-title">Add Transaction</div>
+              <input type="text" id="tx-title" class="input-field mb-4" placeholder="Description">
+              <input type="number" id="tx-amount" class="input-field mb-4" placeholder="Amount (₹)">
+              <select id="tx-type" class="input-field mb-4">
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+              </select>
+              <input type="date" id="tx-date" class="input-field mb-4">
+              <button id="btn-add-tx" class="btn btn-primary w-full">Save Transaction</button>
+            </div>
+            <div class="card">
+              <div class="card-title">Financial Summary</div>
+              <div id="summary" class="mb-4"></div>
+              <div style="height: 200px; position: relative;">
+                <canvas id="expenseChart"></canvas>
+              </div>
+              <div class="card-title mt-6">Recent Transactions</div>
+              <div id="tx-list" class="space-y-2">
+                <!-- Transactions will appear here -->
+              </div>
+              <div class="empty-state text-center text-muted hidden">No transactions yet.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weather Page -->
+        <div id="weather" class="page hidden">
+          <div class="card">
+            <div class="card-title">Detailed Weather</div>
+            <div class="input-group" style="display: flex; gap: 12px;">
+              <input type="text" id="weather-city" class="input-field" placeholder="Enter City Name" value="Pune">
+              <button id="btn-weather" class="btn btn-primary">Search</button>
+              <button id="save-city" class="btn btn-secondary" title="Save as default">★</button>
+            </div>
+            <div id="weather-result" class="result-box mt-4">
+              <!-- Weather details -->
+            </div>
+          </div>
+
+          <div class="card mt-4">
+            <div class="card-title">Market Prices</div>
+            <div class="input-group" style="display: flex; gap: 12px;">
+              <input type="text" id="price-crop" class="input-field" placeholder="Enter Crop Name" value="Tomato">
+              <button id="btn-price" class="btn btn-primary">Check Price</button>
+              <button id="save-crop" class="btn btn-secondary" title="Save as default">★</button>
+            </div>
+            <div id="price-result" class="result-box mt-4">
+              <!-- Price details -->
+            </div>
+            <div class="mt-4 h-40">
+              <canvas id="price-chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Soil Page -->
+        <div id="soil" class="page hidden">
+          <div class="card">
+            <div class="card-title">Soil Health Report</div>
+            <div class="flex gap-2">
+              <input id="soil-field" placeholder="Field name (optional)" class="input-field flex-1" />
+              <button id="btn-soil" class="btn btn-primary w-28">Check</button>
+              <button onclick="openSoilModal()" class="btn btn-secondary" title="Add Report">+</button>
+            </div>
+            <div id="soil-result" class="result-box mt-4">
+              <!-- Soil details -->
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav shadow-lg">
+      <button class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')" title="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5.5V16a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v5H4a1 1 0 0 1-1-1v-9.5Z" />
+        </svg>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" data-page="crops" onclick="showPage('crops')" title="Crops">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 3v3M5.2 7.2 7 9m10-1.8L17 9m4 3h-3m-8 6h8M6 21h2m-5-9H3" />
+        </svg>
+        <span class="nav-label">Crops</span>
+      </button>
+      <button class="nav-item" data-page="finances" onclick="showPage('finances')" title="Finances">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18M3 10h18M3 14h18M3 18h10" />
+        </svg>
+        <span class="nav-label">Finances</span>
+      </button>
+      <button class="nav-item" data-page="soil" onclick="showPage('soil')" title="Soil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 20h16a2 2 0 0 0 2-2V8l-4-4H6L2 8v10a2 2 0 0 0 2 2Z" />
+        </svg>
+        <span class="nav-label">Soil</span>
+      </button>
+    </nav>
+
+    <!-- CHAT BUTTON -->
+    <button id="ai-btn" class="chat-btn" aria-label="Open chat" title="Chat with KisanAI">
+      <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28"
+        height="28">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M2.5 12.8c0 1.6 1.1 3 2.7 3.2 1.1.2 2.1.3 3.3.4.5 0 .9.3 1.2.7L12 21l2.3-3.9c.2-.4.6-.7 1.1-.7 1.1-.1 2.2-.2 3.3-.3 1.6-.2 2.8-1.6 2.8-3.2V6.7c0-1.6-1.1-3-2.7-3.2A48 48 0 0 0 12 3C9.6 3 7.2 3.2 4.9 3.6 3.3 3.8 2.2 5.1 2.2 6.7v6.1z" />
+      </svg>
+    </button>
+
+    <!-- CHAT MODAL -->
+    <div id="chat-overlay" class="chat-overlay" aria-hidden="true"></div>
+    <div id="chat-modal" class="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+      <div class="chat-header">
+        <span id="chat-title" class="font-bold">KisanAI Assistant</span>
+        <div class="flex items-center gap-2">
+          <!-- Mic -->
+          <button id="chat-mic" class="icon-btn" title="Voice input (mic)"
+            style="background:none; border:none; color:white; cursor:pointer;">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
+              height="20">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 1.5a3 3 0 0 0-3 3v6a3 3 0 1 0 6 0v-6a3 3 0 0 0-3-3Zm0 12v6m-3 0h6" />
+            </svg>
+          </button>
+          <!-- Close -->
+          <button id="chat-close" class="icon-btn" aria-label="Close chat" title="Close"
+            style="background:none; border:none; color:white; cursor:pointer;">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20"
+              height="20">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="chat-body" class="chat-body"></div>
+      <div class="chat-input-area">
+        <input id="chat-msg" placeholder="Ask something..." class="input-field w-full" />
+        <button id="btn-send-chat" class="btn btn-primary mt-2 w-full">Send</button>
+      </div>
+    </div>
+
+    <!-- SOIL MODAL -->
+    <div id="soil-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Add Soil Report</h3>
+          <button class="close-modal" onclick="closeSoilModal()">×</button>
+        </div>
+        <div class="modal-body">
+          <input id="s-field" placeholder="Field Name (e.g. North Field)" class="input-field mb-2">
+          <input id="s-type" placeholder="Soil Type (e.g. Black Cotton)" class="input-field mb-2">
+          <div class="grid grid-cols-2 gap-2">
+            <input id="s-ph" type="number" step="0.1" placeholder="pH Level" class="input-field">
+            <input id="s-moisture" type="number" placeholder="Moisture %" class="input-field">
+            <input id="s-n" type="number" placeholder="Nitrogen (N)" class="input-field">
+            <input id="s-p" type="number" placeholder="Phosphorus (P)" class="input-field">
+            <input id="s-k" type="number" placeholder="Potassium (K)" class="input-field">
+          </div>
+          <button onclick="saveSoil()" class="btn btn-primary w-full mt-4">Save Report</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HARVEST MODAL -->
+    <div id="harvest-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>🎉 Harvest Recorded!</h3>
+          <button class="close-modal" onclick="closeHarvestModal()">×</button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-4 text-sm text-muted">Would you like to record the income from this harvest?</p>
+          <input id="h-amount" type="number" placeholder="Income Amount (₹)" class="input-field mb-4">
+          <div class="flex gap-2">
+            <button onclick="saveHarvestIncome()" class="btn btn-primary flex-1">Save Income</button>
+            <button onclick="closeHarvestModal()" class="btn btn-secondary flex-1">Skip</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" class="toast" role="status" aria-live="polite"><span id="toast-message">Action completed!</span>
+    </div>
+
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
+```

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "kisanai": {
+      "command": "python",
+      "args": [
+        "/home/krish/projects/KisanAI/backend/mcp_server.py"
+      ],
+      "env": {},
+      "description": "KisanAI - Smart Farming Assistant with weather, prices, soil, expenses, and crop management tools"
+    }
+  }
+}

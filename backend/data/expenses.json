@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Seeds Purchase",
+        "amount": 4500.0,
+        "type": "expense",
+        "date": "01 Oct 2025",
+        "ts": "2025-10-01"
+    },
+    {
+        "title": "Fertilizer (Urea)",
+        "amount": 2200.0,
+        "type": "expense",
+        "date": "15 Oct 2025",
+        "ts": "2025-10-15"
+    },
+    {
+        "title": "Harvest: Chilli",
+        "amount": 12500.0,
+        "type": "income",
+        "date": "10 Nov 2025",
+        "ts": "2025-11-10"
+    },
+    {
+        "title": "Labor Charges",
+        "amount": 3000.0,
+        "type": "expense",
+        "date": "12 Nov 2025",
+        "ts": "2025-11-12"
+    },
+    {
+        "title": "Sold Tomatoes",
+        "amount": 8000.0,
+        "type": "income",
+        "date": "18 Nov 2025",
+        "ts": "2025-11-18"
+    },
+    {
+        "title": "Harvest: ",
+        "amount": 2.0,
+        "type": "income",
+        "date": "19 Nov 2025",
+        "ts": "2025-11-19"
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "crop": "Tomato",
+        "plot": "North Field",
+        "sown_date": "10 Oct 2025",
+        "stage": "Flowering",
+        "progress": 60
+    },
+    {
+        "crop": "Wheat",
+        "plot": "East Plot",
+        "sown_date": "01 Nov 2025",
+        "stage": "Vegetative",
+        "progress": 30
+    },
+    {
+        "crop": "Chilli",
+        "plot": "Greenhouse",
+        "sown_date": "15 Sep 2025",
+        "stage": "Harvest",
+        "progress": 90
+    }
+]

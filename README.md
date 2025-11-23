@@ -1,270 +1,297 @@
 # 🌾 KisanAI - Smart Farming Assistant
 
-KisanAI is a hybrid AI-powered farming assistant that provides weather forecasts, market prices, soil health monitoring, expense tracking, and crop management through both a web interface and AI agent integration (MCP).
+> An AI-powered farming assistant providing weather forecasts, market prices, soil health monitoring, expense tracking, and intelligent crop management.
 
-## 🎯 Features
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.121+-green.svg)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/React-19-blue.svg)](https://reactjs.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Optimized-success.svg)](SYSTEM_STATUS.md)
 
-- 🌦️ **Weather Forecasts** - Real-time weather data for farming decisions
-- 💰 **Market Prices** - Live crop prices across different states
-- 🌱 **Soil Health** - Soil analysis with NPK levels and pH monitoring
-- 📊 **Financial Tracking** - Income/expense management with analytics
-- 🌾 **Crop Management** - Track multiple crops across different plots
-- 🤖 **AI Chatbot** - Get farming advice powered by LLM
-- 🔌 **Dual Interface** - Web UI for farmers + MCP for AI agents
+---
+
+## ✅ System Status
+
+**Latest Review:** Completed ✅  
+**Dependencies:** Up-to-date ✅  
+**Code Quality:** Linted & Formatted with Ruff ✅
+
+- ✅ All security vulnerabilities addressed.
+- ✅ Frontend and backend dependencies updated to latest stable versions.
+- ✅ Codebase linted and formatted for consistency.
+- ✅ Project startup and setup scripts have been fixed and simplified.
+
+---
+
+## 📑 Table of Contents
+
+- [System Status](#-system-status)
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Quick Start](#-quick-start)
+- [Environment Setup](#-environment-setup)
+- [Development](#-development)
+- [Deployment](#-deployment)
+- [API Documentation](#-api-documentation)
+- [Contributing](#-contributing)
+- [Documentation](#-documentation)
+
+---
+
+## 🎯 Overview
+
+KisanAI is a full-stack web application designed to help farmers make data-driven decisions. It combines real-time weather data, market price tracking, soil health monitoring, and AI-powered insights to optimize farming operations.
+
+**Key Highlights:**
+- 🌦️ Real-time weather forecasts with 5-day predictions
+- 💰 Live market price tracking across multiple states
+- 🌱 Soil health analysis with NPK levels and pH monitoring
+- 📊 Financial tracking with income/expense analytics
+- 🌾 Crop management with growth stage tracking
+- 🤖 AI-powered chatbot for farming advice
+- 📱 Responsive design - works on all devices
+- 🔐 Secure authentication with JWT tokens
+
+---
+
+## ✨ Features
+
+### 🌦️ Weather Forecasts
+- Current weather conditions (temperature, humidity, wind speed)
+- 5-day weather forecast with daily predictions
+- City-based weather search
+- Intelligent caching (6-hour TTL)
+
+### 💰 Market Prices
+- Real-time crop prices from government APIs
+- State-wise price comparison
+- Price history visualization (7-day trend)
+- Modal, minimum, and maximum price tracking
+
+### 🌱 Soil Health Monitoring
+- NPK (Nitrogen, Phosphorus, Potassium) level tracking
+- pH level monitoring with status indicators
+- Moisture percentage tracking
+- Historical soil reports
+
+### 📊 Financial Management
+- Income and expense tracking
+- Category-based expense organization
+- Crop-linked transactions
+- Visual analytics with charts:
+  - Timeline chart (income vs expenses)
+  - Category breakdown (pie/bar chart)
+- Profit/loss calculation
+
+### 🌾 Crop Management
+- Add and track multiple crops
+- Plot/field assignment
+- Growth stage tracking (Sown → Germination → Vegetative → Flowering → Fruiting → Harvest Ready → Harvested)
+- Sowing date recording
+- Quick crop status overview
+
+### 🤖 AI-Powered Features
+- **Smart Dashboard Insights**: AI-generated recommendations based on weather and crop data
+- **Chatbot Assistant**: Ask farming questions and get AI-powered answers
+- Intent detection for context-aware responses
+- LLM integration via OpenRouter (Llama 3.1)
+
+### 🔐 Authentication & Security
+- User registration and login
+- JWT token-based authentication
+- Password hashing with bcrypt
+- Protected API routes
+- Session persistence
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 19** - UI library
+- **React Router DOM 7** - Client-side routing
+- **TanStack React Query 5** - Server state management & caching
+- **TailwindCSS 3** - Utility-first CSS framework
+- **Framer Motion 12** - Animation library
+- **Axios** - HTTP client
+- **Lucide React** - Icon library
+- **Recharts** - Chart visualization
+- **Vite 7** - Build tool and dev server
+
+### Backend
+- **FastAPI** - Modern Python web framework
+- **SQLAlchemy 2.0+** - SQL toolkit and ORM
+- **SQLite** - Lightweight database
+- **Uvicorn** - ASGI server
+- **Pydantic 2.0+** - Data validation
+- **python-jose** - JWT token handling
+- **passlib[bcrypt]** - Password hashing
+- **httpx** - Async HTTP client for external APIs
+
+### External APIs
+- **OpenWeatherMap** - Weather data
+- **India Government Open Data** - Market prices
+- **OpenRouter** - LLM integration (Llama 3.1)
+
+### Development Tools
+- **Git** - Version control
+- **Docker** - Containerization
+- **Ruff** - Python Linter and Formatter
+- **ESLint** - JavaScript Linter
+
+---
 
 ## 📁 Project Structure
 
 ```
-KisanAI/
-├── frontend/                      # Web UI (HTML/CSS/JS)
-│   ├── index.html                # Main dashboard
-│   ├── app.js                    # Frontend logic
-│   └── style.css                 # Styling
+kisan-ai/
 │
-└── backend/                      # Backend servers
-    ├── fastapi_server.py         # REST API for web frontend
-    ├── mcp_server.py             # MCP server for AI agents
-    ├── mcp_config.json           # MCP client configuration
-    ├── config.py                 # Configuration loader
-    ├── requirements.txt          # Python dependencies
-    ├── .env                      # Environment variables
-    │
-    ├── tools/                    # Shared business logic
-    │   ├── weather.py           # Weather API integration
-    │   ├── prices.py            # Market price lookup
-    │   ├── soil.py              # Soil health analysis
-    │   ├── expenses.py          # Financial tracking
-    │   ├── crops.py             # Crop management
-    │   ├── chatbot.py           # AI chatbot
-    │   └── llm.py               # LLM integration
-    │
-    └── data/                    # JSON data storage
-        ├── crops.json
-        ├── expenses.json
-        ├── prices.json
-        ├── soil.json
-        └── weather.json
+├── backend/                    # Python FastAPI Backend
+│   ├── main.py                # FastAPI app entry point
+│   ├── config.py              # Settings & configuration
+│   ├── requirements.txt       # Python dependencies
+│   ├── seed.py                # Database seeding script
+│   │
+│   ├── routes/                # API endpoints
+│   ├── services/              # Business logic
+│   ├── models/                # Data models
+│   ├── middleware/            # Custom middleware
+│   ├── utils/                 # Helper functions
+│   │
+│   ├── data/                  # Runtime data (gitignored)
+│   │   └── kisanai.db        # SQLite database
+│   │
+│   └── logs/                  # Application logs (gitignored)
+│
+├── frontend/                   # React Frontend
+│   ├── index.html             # HTML entry point
+│   ├── package.json           # Node dependencies
+│   ├── vite.config.js         # Vite configuration
+│   │
+│   └── src/
+│       ├── main.jsx           # React entry point
+│       ├── App.jsx            # Router configuration
+│       │
+│       ├── pages/             # Route components
+│       ├── components/        # Reusable components
+│       ├── context/           # React Context
+│       ├── hooks/             # Custom hooks
+│       ├── services/          # API services
+│       └── lib/               # Libraries
+│
+├── docs/                       # Extended documentation
+│
+├── setup.bat                   # Windows setup script
+├── start.bat                   # Start services (Windows)
+└── stop.bat                    # Stop services (Windows)
 ```
+
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
+- **Python 3.11+**
+- **Node.js 16+** and npm
+- **Git**
 
-- Python 3.8+
-- pip
-- Git
-
-### Installation
-
-1. **Clone the repository**
-```powershell
-git clone https://github.com/yourusername/KisanAI.git
-cd KisanAI
+### 1. Clone Repository
+```bash
+git clone https://github.com/yourusername/kisan-ai.git
+cd kisan-ai
 ```
 
-2. **Install Python dependencies**
-```powershell
-cd backend
-pip install -r requirements.txt
+### 2. Run Setup Script
+This script will create a Python virtual environment, install all backend and frontend dependencies, and seed the database with demo data.
+
+```bash
+setup.bat
 ```
 
-3. **Configure environment variables**
-Create a `.env` file in the `backend/` folder and add your API keys:
+### 3. Environment Configuration
+Create a `backend/.env` file by copying `backend/.env.example`. Then, add your API keys.
 
-```env
-OPENWEATHER_KEY=your_openweather_api_key_here
-OPENROUTER_API_KEY=your_openrouter_api_key_here
+```bash
+# Required API Keys in backend/.env
+OPENWEATHER_API_KEY=your-openweather-api-key
+OPENROUTER_API_KEY=your-openrouter-api-key
 ```
 
-**Get API Keys:**
-- OpenWeather API: https://openweathermap.org/api
-- OpenRouter API: https://openrouter.ai/
-
-### Running the Application
-
-#### Option 1: Web Interface (for farmers)
-
-**Terminal 1 - Start FastAPI Server:**
-```powershell
-cd backend
-python -m uvicorn fastapi_server:app --host 0.0.0.0 --port 9000 --reload
+### 4. Start Application
+```bash
+start.bat
 ```
+This will start the backend on `http://localhost:8000` and the frontend on `http://localhost:3000`, and open the application in your browser.
 
-**Access the web app:**
-- Open browser: http://localhost:9000/frontend/index.html
-- Or: http://127.0.0.1:9000/frontend/index.html
-
-#### Option 2: MCP Server (for AI agents)
-
-**Terminal 2 - Start MCP Server:**
-```powershell
-cd backend
-python mcp_server.py
-```
-
-### Testing the Servers
-
-**Test FastAPI Server:**
-You can use `curl` or simply open these URLs in your browser:
-
-- Server Status: http://localhost:9000/
-- Weather: http://localhost:9000/weather?city=Pune
-- Market Price: http://localhost:9000/price?crop=Tomato&state=Maharashtra
-- Soil Report: http://localhost:9000/soil
-
-## 🔌 MCP Integration
-
-### Connect to Claude Desktop
-
-1. **Find Claude Desktop config:**
-   - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
-   - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-
-2. **Add KisanAI MCP server:**
-   Update the path to point to your `mcp_server.py` file.
-
-```json
-{
-  "mcpServers": {
-    "kisanai": {
-      "command": "python",
-      "args": [
-        "C:\\Users\\krish\\OneDrive\\Documents\\Desktop\\KisanAI\\backend\\mcp_server.py"
-      ],
-      "env": {}
-    }
-  }
-}
-```
-*Note: Make sure to use double backslashes `\\` in the path on Windows.*
-
-3. **Restart Claude Desktop**
-
-4. **Test in Claude:**
-```
-"Get weather for Mumbai"
-"What is the current price of Tomato in Maharashtra?"
-"Show my crop list"
-"Add expense: Fertilizer, 5000 rupees, expense type, 2025-11-06"
-```
-
-### Available MCP Tools
-
-| Tool | Description |
-|------|-------------|
-| `get_weather` | Get weather for any city |
-| `get_market_price` | Get crop prices by state |
-| `get_soil_report` | Get soil health analysis |
-| `add_expense` | Add financial transaction |
-| `get_expenses` | List all transactions |
-| `get_financial_summary` | Get income/expense summary |
-| `get_crops` | List all crops |
-| `add_crop` | Add new crop |
-| `delete_crop` | Remove crop |
-| `ask_farming_question` | Get AI farming advice |
-
-## 📊 API Endpoints (FastAPI)
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/` | GET | Server status |
-| `/weather?city={city}` | GET | Weather data |
-| `/price?crop={crop}&state={state}` | GET | Market prices |
-| `/soil?field={field}` | GET | Soil report |
-| `/expense/add?title=...&amount=...&type=...&date=...` | GET | Add expense |
-| `/expense/list` | GET | List expenses |
-| `/expense/summary` | GET | Financial summary |
-| `/crops` | GET | List crops |
-| `/crops/add` | POST | Add crop |
-| `/chatbot` | POST | Ask farming question |
-
-## 🛠️ Development
-
-### Run in Development Mode
-
-**FastAPI with auto-reload:**
-```powershell
-cd backend
-uvicorn fastapi_server:app --reload --port 9000
-```
-
-**Check logs:**
-- FastAPI logs appear in terminal
-- MCP logs go to Claude Desktop logs
-
-### Add New Tool
-
-1. **Create tool in `backend/tools/`:**
-```python
-# backend/tools/my_tool.py
-def my_function(param):
-    return {"result": "data"}
-```
-
-2. **Add to FastAPI server:**
-```python
-# backend/fastapi_server.py
-from tools.my_tool import my_function
-
-@app.get("/my-endpoint")
-def endpoint(param: str):
-    return my_function(param)
-```
-
-3. **Add to MCP server:**
-```python
-# backend/mcp_server.py
-from tools.my_tool import my_function
-
-# Add to list_tools()
-Tool(
-    name="my_tool",
-    description="...",
-    inputSchema={...}
-)
-
-# Add to call_tool()
-elif name == "my_tool":
-    result = my_function(arguments.get("param"))
-```
-
-## 📦 Data Storage
-
-All data is stored in `backend/data/` as JSON files:
-
-- `crops.json` - Crop tracking data
-- `expenses.json` - Financial transactions
-- `prices.json` - Cached market prices
-- `soil.json` - Soil health reports
-- `weather.json` - Cached weather data
-
-## 🔐 Security Notes
-
-- Never commit `.env` file to Git
-- Use environment variables for API keys
-- Restrict CORS in production
-- Validate all user inputs
-- Use HTTPS in production
-
-## 📝 License
-
-MIT License - Feel free to use for your farming projects!
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch
-3. Make changes
-4. Test both FastAPI and MCP servers
-5. Submit pull request
-
-## 📞 Support
-
-For issues or questions:
-- Check troubleshooting section above
-- Review API documentation
-- Check server logs
+**Demo Credentials:**
+- Username: `demo`
+- Password: `demo123`
 
 ---
 
-**Built with ❤️ for farmers using FastAPI + MCP**
+## 💻 Development
+
+### Backend Development
+
+**Run in development mode:**
+```bash
+# From project root
+.\.venv\Scripts\python.exe -m uvicorn backend.main:app --reload --port 8000
+```
+
+**Linting and Formatting:**
+```bash
+# Check for issues
+.\.venv\Scripts\ruff.exe check backend
+
+# Format code
+.\.venv\Scripts\ruff.exe format backend
+```
+
+### Frontend Development
+
+**Run development server:**
+```bash
+cd frontend
+npm run dev
+```
+
+**Lint code:**
+```bash
+cd frontend
+npm run lint
+```
+
+---
+
+## 🐳 Deployment
+
+See [docs/DEPLOYMENT_CHECKLIST.md](docs/DEPLOYMENT_CHECKLIST.md) for the complete deployment guide.
+
+---
+
+## 📡 API Documentation
+
+**API docs are available at http://localhost:8000/docs** after starting the backend server.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these guidelines:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📚 Documentation
+
+- **[UI/UX Guide](docs/UI_UX_GUIDE.md)**
+- **[Backend Guide](docs/BACKEND_GUIDE.md)**
+- **[React Query Guide](docs/REACT_QUERY_GUIDE.md)**
+- **[Deployment Checklist](docs/DEPLOYMENT_CHECKLIST.md)**

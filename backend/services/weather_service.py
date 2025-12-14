@@ -56,6 +56,16 @@ def get_weather(db: Session, city: str) -> dict[str, Any]:
     try:
         url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={settings.OPENWEATHER_KEY}&units=metric"
         response = requests.get(url, timeout=10)
+        
+        # Handle various HTTP status codes
+        if response.status_code == 404:
+            logger.warning(f"City not found: {city}")
+            return {"error": f"City '{city}' not found"}
+        
+        if response.status_code == 401:
+            logger.error("Invalid OpenWeather API key")
+            return {"error": "Weather service authentication failed"}
+        
         data = response.json()
 
         if data.get("cod") != 200:
@@ -97,6 +107,42 @@ def get_weather(db: Session, city: str) -> dict[str, Any]:
         logger.info(f"Successfully fetched and cached weather for {city}")
         return weather_data
 
+    except requests.Timeout:
+        logger.error(f"Weather API request timed out for {city}")
+        # If API times out but we have stale cache, return that
+        if cache_entry:
+            logger.warning(f"Returning stale cache for {city} due to timeout")
+            return {
+                "city": cache_entry.city,
+                "temp": cache_entry.temperature,
+                "temperature": cache_entry.temperature,
+                "condition": cache_entry.condition,
+                "weather": cache_entry.condition,
+                "humidity": cache_entry.humidity,
+                "wind_speed": cache_entry.wind_speed,
+                "cached": True,
+                "stale": True,
+            }
+        return {"error": "Weather service request timed out"}
+        
+    except requests.RequestException as e:
+        logger.error(f"Weather API request failed for {city}: {e}")
+        # If API fails but we have stale cache, might be better to return that than error
+        if cache_entry:
+            logger.warning(f"Returning stale cache for {city} due to API failure")
+            return {
+                "city": cache_entry.city,
+                "temp": cache_entry.temperature,
+                "temperature": cache_entry.temperature,
+                "condition": cache_entry.condition,
+                "weather": cache_entry.condition,
+                "humidity": cache_entry.humidity,
+                "wind_speed": cache_entry.wind_speed,
+                "cached": True,
+                "stale": True,
+            }
+        return {"error": "Unable to connect to weather service"}
+        
     except Exception as e:
         logger.error(f"Weather API request failed for {city}: {e}")
         # If API fails but we have stale cache, might be better to return that than error

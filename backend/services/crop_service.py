@@ -66,7 +66,7 @@ def delete_crop(db: Session, crop_id: int) -> dict[str, Any]:
         Dictionary with status and deleted crop data
 
     """
-    logger.info(f"Deleting crop with ID: {expense_id}")
+    logger.info(f"Deleting crop with ID: {crop_id}")
 
     try:
         crop = db.query(Crop).filter(Crop.id == crop_id).first()

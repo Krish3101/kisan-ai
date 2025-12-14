@@ -1,204 +1,180 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { weatherApi, cropsApi, expensesApi, pricesApi, chatApi, authApi, soilApi, dashboardApi } from '../services/api';
+import { 
+    cropsApi, 
+    expensesApi, 
+    soilApi, 
+    weatherApi, 
+    dashboardApi,
+    pricesApi,
+    chatApi 
+} from '../services/api';
+import { STALE_TIME, QUERY_KEYS } from '../lib/queryClient';
+import { DEFAULTS } from '../constants';
 
-// Query keys for cache management
-export const queryKeys = {
-    weather: (city) => ['weather', city],
-    weatherForecast: (city) => ['weather', 'forecast', city],
-    crops: ['crops'],
-    expenses: ['expenses'],
-    expensesSummary: ['expenses', 'summary'],
-    prices: (crop, state) => ['prices', crop, state],
-    profile: ['profile'],
-    soil: ['soil'],
-    dashboardInsight: (city, crop) => ['dashboard', 'insight', city, crop],
-};
-
-// Weather hooks
-export const useWeather = (city) => {
+// ============================================
+// WEATHER
+// ============================================
+export const useWeather = (city = DEFAULTS.CITY) => {
     return useQuery({
-        queryKey: queryKeys.weather(city),
-        queryFn: () => weatherApi.getWeather(city),
-        enabled: !!city && city.length > 2,
-        staleTime: 10 * 60 * 1000, // 10 minutes
-        retry: 2,
-        retryDelay: 1000,
+        queryKey: [QUERY_KEYS.WEATHER, city],
+        queryFn: () => weatherApi.getCurrent(city),
+        staleTime: STALE_TIME.SHORT,
+        enabled: !!city,
     });
 };
 
-export const useWeatherForecast = (city) => {
+export const useWeatherForecast = (city = DEFAULTS.CITY) => {
     return useQuery({
-        queryKey: queryKeys.weatherForecast(city),
+        queryKey: [QUERY_KEYS.WEATHER_FORECAST, city],
         queryFn: () => weatherApi.getForecast(city),
-        enabled: !!city && city.length > 2,
-        staleTime: 10 * 60 * 1000, // 10 minutes
-        retry: 2,
-        retryDelay: 1000,
+        staleTime: STALE_TIME.SHORT,
+        enabled: !!city,
     });
 };
 
-// Crops hooks
+// ============================================
+// CROPS
+// ============================================
 export const useCrops = () => {
     return useQuery({
-        queryKey: queryKeys.crops,
+        queryKey: [QUERY_KEYS.CROPS],
         queryFn: cropsApi.getAll,
+        staleTime: STALE_TIME.MEDIUM,
     });
 };
 
 export const useAddCrop = () => {
     const queryClient = useQueryClient();
-
+    
     return useMutation({
         mutationFn: cropsApi.add,
         onSuccess: () => {
-            // Invalidate and refetch crops
-            queryClient.invalidateQueries({ queryKey: queryKeys.crops });
-        },
-        onError: (error) => {
-            console.error('Failed to add crop:', error);
-            const message = error?.response?.data?.detail || 'Failed to add crop. Please try again.';
-            alert(`Error: ${message}`);
-        },
-    });
-};
-
-export const useDeleteCrop = () => {
-    const queryClient = useQueryClient();
-
-    return useMutation({
-        mutationFn: cropsApi.delete,
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: queryKeys.crops });
-        },
-        onError: (error) => {
-            console.error('Failed to delete crop:', error);
-            const message = error?.response?.data?.detail || 'Failed to delete crop. Please try again.';
-            alert(`Error: ${message}`);
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.CROPS] });
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.DASHBOARD] });
         },
     });
 };
 
 export const useUpdateCropStage = () => {
     const queryClient = useQueryClient();
-
+    
     return useMutation({
-        mutationFn: ({ id, stage }) => cropsApi.updateStage(id, stage),
+        mutationFn: cropsApi.updateStage,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: queryKeys.crops });
-        },
-        onError: (error) => {
-            console.error('Failed to update crop stage:', error);
-            const message = error?.response?.data?.detail || 'Failed to update crop stage. Please try again.';
-            alert(`Error: ${message}`);
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.CROPS] });
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.DASHBOARD] });
         },
     });
 };
 
-// Expenses hooks
+export const useDeleteCrop = () => {
+    const queryClient = useQueryClient();
+    
+    return useMutation({
+        mutationFn: cropsApi.delete,
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.CROPS] });
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.DASHBOARD] });
+        },
+    });
+};
+
+// ============================================
+// EXPENSES
+// ============================================
 export const useExpenses = () => {
     return useQuery({
-        queryKey: queryKeys.expenses,
+        queryKey: [QUERY_KEYS.EXPENSES],
         queryFn: expensesApi.getAll,
+        staleTime: STALE_TIME.MEDIUM,
     });
 };
 
 export const useExpensesSummary = () => {
     return useQuery({
-        queryKey: queryKeys.expensesSummary,
+        queryKey: [QUERY_KEYS.EXPENSE_SUMMARY],
         queryFn: expensesApi.getSummary,
+        staleTime: STALE_TIME.MEDIUM,
     });
 };
 
 export const useAddExpense = () => {
     const queryClient = useQueryClient();
-
+    
     return useMutation({
         mutationFn: expensesApi.add,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: queryKeys.expenses });
-            queryClient.invalidateQueries({ queryKey: queryKeys.expensesSummary });
-        },
-        onError: (error) => {
-            console.error('Failed to add expense:', error);
-            const message = error?.response?.data?.detail || 'Failed to add expense. Please try again.';
-            alert(`Error: ${message}`);
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.EXPENSES] });
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.EXPENSE_SUMMARY] });
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.DASHBOARD] });
         },
     });
 };
 
 export const useDeleteExpense = () => {
     const queryClient = useQueryClient();
-
+    
     return useMutation({
         mutationFn: expensesApi.delete,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: queryKeys.expenses });
-            queryClient.invalidateQueries({ queryKey: queryKeys.expensesSummary });
-        },
-        onError: (error) => {
-            console.error('Failed to delete expense:', error);
-            const message = error?.response?.data?.detail || 'Failed to delete expense. Please try again.';
-            alert(`Error: ${message}`);
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.EXPENSES] });
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.EXPENSE_SUMMARY] });
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.DASHBOARD] });
         },
     });
 };
 
-// Prices hooks
-export const usePrices = (crop, state) => {
-    return useQuery({
-        queryKey: queryKeys.prices(crop, state),
-        queryFn: () => pricesApi.getPrice(crop, state),
-        enabled: !!crop && !!state,
-        staleTime: 30 * 60 * 1000, // 30 minutes - prices don't change often
-    });
-};
-
-// Chat hooks
-export const useSendMessage = () => {
-    return useMutation({
-        mutationFn: (data) => chatApi.sendMessage(data),
-    });
-};
-
-// Auth hooks
-export const useProfile = () => {
-    return useQuery({
-        queryKey: queryKeys.profile,
-        queryFn: authApi.getProfile,
-        retry: false,
-    });
-};
-
-// Soil hooks
+// ============================================
+// SOIL
+// ============================================
 export const useSoilReports = () => {
     return useQuery({
-        queryKey: queryKeys.soil,
+        queryKey: [QUERY_KEYS.SOIL],
         queryFn: soilApi.getAll,
+        staleTime: STALE_TIME.LONG,
     });
 };
 
 export const useAddSoilReport = () => {
     const queryClient = useQueryClient();
-
+    
     return useMutation({
         mutationFn: soilApi.add,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: queryKeys.soil });
-        },
-        onError: (error) => {
-            console.error('Failed to add soil report:', error);
-            const message = error?.response?.data?.detail || 'Failed to add soil report. Please try again.';
-            alert(`Error: ${message}`);
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.SOIL] });
         },
     });
 };
 
-// Dashboard hooks
-export const useDashboardInsight = (city = 'Pune', crop = 'Tomato') => {
+// ============================================
+// PRICES
+// ============================================
+export const usePrice = (crop, state) => {
     return useQuery({
-        queryKey: queryKeys.dashboardInsight(city, crop),
+        queryKey: [QUERY_KEYS.PRICES, crop, state],
+        queryFn: () => pricesApi.getPrice(crop, state),
+        staleTime: STALE_TIME.LONG,
+        enabled: !!crop && !!state,
+    });
+};
+
+// ============================================
+// DASHBOARD
+// ============================================
+export const useDashboardInsight = (city = DEFAULTS.CITY, crop = DEFAULTS.CROP) => {
+    return useQuery({
+        queryKey: [QUERY_KEYS.DASHBOARD, city, crop],
         queryFn: () => dashboardApi.getInsight(city, crop),
-        staleTime: 15 * 60 * 1000, // 15 minutes
-        retry: 2,
+        staleTime: STALE_TIME.SHORT,
+        enabled: !!city && !!crop,
+    });
+};
+
+// ============================================
+// CHAT
+// ============================================
+export const useSendMessage = () => {
+    return useMutation({
+        mutationFn: chatApi.sendMessage,
     });
 };

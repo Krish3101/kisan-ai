@@ -19,8 +19,16 @@ def get_weather(city: str = Query(None, description="City name"), db: Session = 
     """Get weather information for a specific city."""
     # Use config default if not provided
     city = city.strip() if city else settings.DEFAULT_CITY
-    if len(city) > 50:
-        city = city[:50]
+    
+    # Input validation
+    if not city:
+        return {"error": "City name is required"}
+    if len(city) > 100:
+        city = city[:100]
+    # Remove any potentially harmful characters
+    city = "".join(c for c in city if c.isalnum() or c.isspace() or c in "-'")
+    if not city:
+        return {"error": "Invalid city name"}
 
     logger.info(f"Weather endpoint called for city: {city}")
     return get_weather_service(db, city)
@@ -33,8 +41,16 @@ def get_weather_forecast(
     """Get 5-day weather forecast for a specific city."""
     # Use config default if not provided
     city = city.strip() if city else settings.DEFAULT_CITY
-    if len(city) > 50:
-        city = city[:50]
+    
+    # Input validation
+    if not city:
+        return {"error": "City name is required"}
+    if len(city) > 100:
+        city = city[:100]
+    # Remove any potentially harmful characters
+    city = "".join(c for c in city if c.isalnum() or c.isspace() or c in "-'")
+    if not city:
+        return {"error": "Invalid city name"}
 
     logger.info(f"Weather forecast endpoint called for city: {city}")
     return get_weather_forecast_service(db, city)

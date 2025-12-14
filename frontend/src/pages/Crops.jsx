@@ -44,7 +44,7 @@ const Crops = () => {
 
     const handleStageUpdate = useCallback(async (id, stage) => {
         try {
-            await updateStageMutation.mutateAsync({ id, stage });
+            await updateStageMutation.mutateAsync({ cropId: id, stage });
         } catch (error) {
             // Error already handled by mutation
         }

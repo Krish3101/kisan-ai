@@ -10,6 +10,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
+from pydantic import ValidationError
 
 from config import get_logger, settings, setup_logging
 from middleware.performance import PerformanceMonitoringMiddleware
@@ -105,6 +106,27 @@ app.include_router(crops.router, prefix="/api/v1", tags=["Crops"])
 app.include_router(expenses.router, prefix="/api/v1", tags=["Expenses"])
 app.include_router(chatbot.router, prefix="/api/v1", tags=["Chatbot"])
 app.include_router(dashboard.router, prefix="/api/v1", tags=["Dashboard"])
+
+
+# Global exception handlers
+@app.exception_handler(ValidationError)
+async def validation_exception_handler(request: Request, exc: ValidationError):
+    """Handle Pydantic validation errors"""
+    logger.warning(f"Validation error: {exc}")
+    return JSONResponse(
+        status_code=422,
+        content={"detail": "Invalid request data", "errors": exc.errors()},
+    )
+
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    """Handle unexpected exceptions"""
+    logger.error(f"Unhandled exception on {request.url.path}: {exc}", exc_info=True)
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "An unexpected error occurred. Please try again later."},
+    )
 
 
 @app.get("/")

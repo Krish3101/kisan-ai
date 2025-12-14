@@ -7,28 +7,25 @@ from sqlalchemy.orm import Session
 
 from config import get_logger
 from models.database import get_db
+from models.schemas import ExpenseCreate
 from services.expense_service import add_expense as add_expense_service
 from services.expense_service import delete_expense as delete_expense_service
 from services.expense_service import get_expenses as get_expenses_service
 from services.expense_service import get_summary as get_summary_service
+from utils.helpers import StorageError
 
 logger = get_logger(__name__)
 router = APIRouter()
 
 
-from models.schemas import ExpenseCreate
-
-
 @router.post("/expense/add", response_model=None)
 def add_expense(expense: ExpenseCreate, db: Session = Depends(get_db)) -> dict[str, Any]:
     """Add a new expense or income record."""
-    from utils.helpers import StorageException
-
     logger.info(f"Adding {expense.type}: {expense.title} - Rs.{expense.amount}")
 
     try:
         return add_expense_service(db, expense.title, expense.amount, expense.type, expense.date, expense.crop_id)
-    except StorageException as e:
+    except StorageError as e:
         logger.warning(f"Storage error: {e}")
         db.rollback()
         raise HTTPException(status_code=400, detail=str(e))

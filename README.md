@@ -12,14 +12,15 @@
 
 ## ✅ System Status
 
-**Latest Review:** Completed ✅  
-**Dependencies:** Up-to-date ✅  
-**Code Quality:** Linted & Formatted with Ruff ✅
+**Latest Version:** 2.0 (Refactored & Optimized) ✅  
+**Code Quality:** Production-Grade ✅  
+**Structure:** Clean & Organized ✅
 
-- ✅ All security vulnerabilities addressed.
-- ✅ Frontend and backend dependencies updated to latest stable versions.
-- ✅ Codebase linted and formatted for consistency.
-- ✅ Project startup and setup scripts have been fixed and simplified.
+- ✅ All security vulnerabilities addressed
+- ✅ Dependencies updated to latest stable versions
+- ✅ Codebase fully refactored and organized
+- ✅ Consistent coding patterns enforced
+- ✅ Documentation updated and comprehensive
 
 ---
 
@@ -145,47 +146,15 @@ KisanAI is a full-stack web application designed to help farmers make data-drive
 
 ## 📁 Project Structure
 
+See [STRUCTURE.md](STRUCTURE.md) for detailed project organization.
+
 ```
 kisan-ai/
-│
-├── backend/                    # Python FastAPI Backend
-│   ├── main.py                # FastAPI app entry point
-│   ├── config.py              # Settings & configuration
-│   ├── requirements.txt       # Python dependencies
-│   ├── seed.py                # Database seeding script
-│   │
-│   ├── routes/                # API endpoints
-│   ├── services/              # Business logic
-│   ├── models/                # Data models
-│   ├── middleware/            # Custom middleware
-│   ├── utils/                 # Helper functions
-│   │
-│   ├── data/                  # Runtime data (gitignored)
-│   │   └── kisanai.db        # SQLite database
-│   │
-│   └── logs/                  # Application logs (gitignored)
-│
-├── frontend/                   # React Frontend
-│   ├── index.html             # HTML entry point
-│   ├── package.json           # Node dependencies
-│   ├── vite.config.js         # Vite configuration
-│   │
-│   └── src/
-│       ├── main.jsx           # React entry point
-│       ├── App.jsx            # Router configuration
-│       │
-│       ├── pages/             # Route components
-│       ├── components/        # Reusable components
-│       ├── context/           # React Context
-│       ├── hooks/             # Custom hooks
-│       ├── services/          # API services
-│       └── lib/               # Libraries
-│
-├── docs/                       # Extended documentation
-│
-├── setup.bat                   # Windows setup script
-├── start.bat                   # Start services (Windows)
-└── stop.bat                    # Stop services (Windows)
+├── backend/          # FastAPI backend
+├── frontend/         # React frontend
+├── docs/             # Documentation
+├── scripts/          # Utility scripts
+└── README.md
 ```
 
 ---
@@ -204,30 +173,32 @@ cd kisan-ai
 ```
 
 ### 2. Run Setup Script
-This script will create a Python virtual environment, install all backend and frontend dependencies, and seed the database with demo data.
-
 ```bash
-setup.bat
+scripts\setup.bat
 ```
 
-### 3. Environment Configuration
-Create a `backend/.env` file by copying `backend/.env.example`. Then, add your API keys.
-
+### 3. Configure Environment
 ```bash
-# Required API Keys in backend/.env
-OPENWEATHER_API_KEY=your-openweather-api-key
-OPENROUTER_API_KEY=your-openrouter-api-key
+# Copy example env files
+copy backend\.env.example backend\.env
+copy frontend\.env.example frontend\.env
+
+# Edit backend\.env and add your API keys
 ```
 
 ### 4. Start Application
 ```bash
-start.bat
+scripts\start.bat
 ```
-This will start the backend on `http://localhost:8000` and the frontend on `http://localhost:3000`, and open the application in your browser.
 
-**Demo Credentials:**
-- Username: `demo`
-- Password: `demo123`
+### 5. Access the App
+- **Frontend:** http://localhost:3000
+- **Backend API:** http://localhost:8000
+- **API Docs:** http://localhost:8000/docs
+
+### Default Login
+- **Username:** demo
+- **Password:** demo123
 
 ---
 
@@ -235,63 +206,145 @@ This will start the backend on `http://localhost:8000` and the frontend on `http
 
 ### Backend Development
 
-**Run in development mode:**
 ```bash
-# From project root
-.\.venv\Scripts\python.exe -m uvicorn backend.main:app --reload --port 8000
-```
+# Activate virtual environment
+.venv\Scripts\activate
 
-**Linting and Formatting:**
-```bash
-# Check for issues
-.\.venv\Scripts\ruff.exe check backend
+# Run development server
+uvicorn backend.main:app --reload --port 8000
+
+# Run linter
+ruff check backend
 
 # Format code
-.\.venv\Scripts\ruff.exe format backend
+ruff format backend
 ```
 
 ### Frontend Development
 
-**Run development server:**
 ```bash
 cd frontend
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
+
+# Run linter
+npm run lint
+
+# Build for production
+npm run build
 ```
 
-**Lint code:**
+---
+
+## 🧪 Testing
+
+### Backend Tests
+```bash
+# Install test dependencies
+pip install pytest pytest-cov
+
+# Run tests
+pytest backend/tests/ -v
+
+# With coverage
+pytest backend/tests/ --cov=backend
+```
+
+### Frontend Tests
 ```bash
 cd frontend
-npm run lint
+
+# Install test dependencies
+npm install -D vitest @testing-library/react
+
+# Run tests
+npm test
 ```
 
 ---
 
 ## 🐳 Deployment
 
-See [docs/DEPLOYMENT_CHECKLIST.md](docs/DEPLOYMENT_CHECKLIST.md) for the complete deployment guide.
+See [docs/DEPLOYMENT_CHECKLIST.md](docs/DEPLOYMENT_CHECKLIST.md) for the complete production deployment guide.
+
+### Quick Deploy with Docker
+
+```bash
+# Build and start services
+docker-compose -f docker-compose.prod.yml up -d
+
+# View logs
+docker-compose logs -f
+```
 
 ---
 
 ## 📡 API Documentation
 
-**API docs are available at http://localhost:8000/docs** after starting the backend server.
+Interactive API documentation is available at:
+- **Swagger UI:** http://localhost:8000/docs
+- **ReDoc:** http://localhost:8000/redoc
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow these guidelines:
+Contributions are welcome! Please follow these steps:
+
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create a feature branch: `git checkout -b feature/AmazingFeature`
+3. Commit changes: `git commit -m 'Add AmazingFeature'`
+4. Push to branch: `git push origin feature/AmazingFeature`
 5. Open a Pull Request
+
+### Coding Standards
+- Follow [docs/BACKEND_GUIDE.md](docs/BACKEND_GUIDE.md) for backend code
+- Follow [docs/UI_UX_GUIDE.md](docs/UI_UX_GUIDE.md) for frontend code
+- Write tests for new features
+- Update documentation as needed
 
 ---
 
 ## 📚 Documentation
 
-- **[UI/UX Guide](docs/UI_UX_GUIDE.md)**
-- **[Backend Guide](docs/BACKEND_GUIDE.md)**
-- **[React Query Guide](docs/REACT_QUERY_GUIDE.md)**
-- **[Deployment Checklist](docs/DEPLOYMENT_CHECKLIST.md)**
+Comprehensive guides are available in the `docs/` directory:
+
+- **[STRUCTURE.md](STRUCTURE.md)** - Project structure overview
+- **[BACKEND_GUIDE.md](docs/BACKEND_GUIDE.md)** - Backend best practices
+- **[REACT_QUERY_GUIDE.md](docs/REACT_QUERY_GUIDE.md)** - React Query patterns
+- **[UI_UX_GUIDE.md](docs/UI_UX_GUIDE.md)** - UI/UX standardization
+- **[DEPLOYMENT_CHECKLIST.md](docs/DEPLOYMENT_CHECKLIST.md)** - Production deployment
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- OpenWeatherMap for weather data
+- India Government Open Data for market prices
+- OpenRouter for LLM access
+- The open-source community
+
+---
+
+## 📞 Support
+
+For issues, questions, or contributions:
+- Open an issue on GitHub
+- Check existing documentation
+- Review the changelog
+
+---
+
+**Version:** 2.0  
+**Last Updated:** November 30, 2025  
+**Status:** Production Ready 🚀

@@ -8,7 +8,11 @@
     "build:analyze": "vite build --mode analyze",
     "preview": "vite preview",
     "lint": "eslint src --ext js,jsx",
-    "clean": "rm -rf dist node_modules/.vite"
+    "clean": "rm -rf dist node_modules/.vite",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.10",

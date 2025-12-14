@@ -4,7 +4,7 @@ To manually test the application, please follow these steps:
 
 2.  **Start the Backend Server** in the first terminal:
     *   Navigate to your project's root directory: `cd C:\Users\krish\OneDrive\Documents\Desktop\kisan-ai`
-    *   Run the command: `.\start.bat` (This will start both backend and frontend, if the frontend is already started, this will just launch the backend)
+    *   Run the command: `scripts\start.bat` (This will start both backend and frontend)
     *   Alternatively, to start only the backend: `.\.venv\Scripts\python.exe -m uvicorn backend.main:app --reload --port 8000` (Make sure your terminal's current directory is the project root)
 
 3.  **Start the Frontend Development Server** in the second terminal:

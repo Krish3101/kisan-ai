@@ -4,7 +4,7 @@ import { Calendar, MapPin, Search } from 'lucide-react';
 
 import PageTransition from '../components/PageTransition';
 import { DEFAULTS, INDIAN_STATES } from '../constants';
-import { usePrices } from '../hooks/useApi';
+import { usePrice } from '../hooks/useApi';
 import { formatDate } from '../utils/dateUtils';
 
 const Prices = () => {
@@ -12,7 +12,7 @@ const Prices = () => {
     const [submittedParams, setSubmittedParams] = useState({ crop: DEFAULTS.CROP, state: DEFAULTS.STATE });
 
     // Use React Query hook - only fetch when params are submitted
-    const { data: priceData, isLoading: loading, isError, error: queryError } = usePrices(
+    const { data: priceData, isLoading: loading, isError, error: queryError } = usePrice(
         submittedParams.crop,
         submittedParams.state
     );

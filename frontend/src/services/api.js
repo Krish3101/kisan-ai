@@ -1,13 +1,16 @@
 import axios from 'axios';
+import { API_CONFIG } from '../config/api.config';
 
+// Create axios instance
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL || '/api/v1',
+    baseURL: API_CONFIG.BASE_URL,
+    timeout: API_CONFIG.TIMEOUT,
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
-// Request interceptor for adding auth token
+// Request interceptor
 api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');
@@ -19,70 +22,68 @@ api.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-// Response interceptor for error handling
+// Response interceptor
 api.interceptors.response.use(
     (response) => response.data,
     (error) => {
-        console.error('API Error:', error.response?.data || error.message);
         if (error.response?.status === 401) {
             localStorage.removeItem('token');
-            // Optional: Redirect to login if not already there
-            if (!window.location.pathname.includes('/login')) {
-                window.location.href = '/login';
-            }
+            localStorage.removeItem('user');
+            window.location.href = '/login';
         }
-        return Promise.reject(error.response?.data || error.message);
+        return Promise.reject(error);
     }
 );
 
+// API Services
 export const authApi = {
     login: (username, password) => {
         const formData = new URLSearchParams();
         formData.append('username', username);
         formData.append('password', password);
-        return api.post('/auth/login', formData, {
+        return api.post(API_CONFIG.ENDPOINTS.AUTH.LOGIN, formData, {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
     },
-    register: (data) => api.post('/auth/register', data),
-    getProfile: () => api.get('/auth/me'),
-    logout: () => api.post('/auth/logout'),
+    register: (data) => api.post(API_CONFIG.ENDPOINTS.AUTH.REGISTER, data),
 };
 
 export const weatherApi = {
-    getWeather: (city) => api.get(`/weather?city=${city}`),
-    getForecast: (city) => api.get(`/weather/forecast?city=${city}`),
+    getCurrent: (city) => api.get(`${API_CONFIG.ENDPOINTS.WEATHER.CURRENT}?city=${city}`),
+    getForecast: (city) => api.get(`${API_CONFIG.ENDPOINTS.WEATHER.FORECAST}?city=${city}`),
 };
 
 export const cropsApi = {
-    getAll: () => api.get('/crops'),
-    add: (data) => api.post('/crops/add', data),
-    delete: (id) => api.post('/crops/delete', { id }),
-    updateStage: (id, stage) => api.patch(`/crops/${id}/stage`, { stage }),
+    getAll: () => api.get(API_CONFIG.ENDPOINTS.CROPS.LIST),
+    add: (data) => api.post(API_CONFIG.ENDPOINTS.CROPS.ADD, data),
+    updateStage: ({ cropId, stage }) => 
+        api.put(`${API_CONFIG.ENDPOINTS.CROPS.UPDATE_STAGE}/${cropId}`, { stage }),
+    delete: (cropId) => api.delete(`${API_CONFIG.ENDPOINTS.CROPS.DELETE}/${cropId}`),
 };
 
 export const expensesApi = {
-    getAll: () => api.get('/expense/list'),
-    add: (data) => api.post('/expense/add', data),
-    delete: (id) => api.delete(`/expense/${id}`),
-    getSummary: () => api.get('/expense/summary'),
+    getAll: () => api.get(API_CONFIG.ENDPOINTS.EXPENSES.LIST),
+    add: (data) => api.post(API_CONFIG.ENDPOINTS.EXPENSES.ADD, data),
+    delete: (expenseId) => api.delete(`${API_CONFIG.ENDPOINTS.EXPENSES.DELETE}/${expenseId}`),
+    getSummary: () => api.get(API_CONFIG.ENDPOINTS.EXPENSES.SUMMARY),
 };
 
 export const pricesApi = {
-    getPrice: (crop, state) => api.get(`/price?crop=${crop}&state=${state}`),
+    getPrice: (crop, state) => api.get(`${API_CONFIG.ENDPOINTS.PRICES}?crop=${crop}&state=${state}`),
 };
 
 export const chatApi = {
-    sendMessage: (data) => api.post('/chatbot', data),
+    sendMessage: (data) => api.post(API_CONFIG.ENDPOINTS.CHATBOT, data),
 };
 
 export const soilApi = {
-    getAll: () => api.get('/soil'),
-    add: (data) => api.post('/soil/add', data),
+    getAll: () => api.get(API_CONFIG.ENDPOINTS.SOIL.LIST),
+    add: (data) => api.post(API_CONFIG.ENDPOINTS.SOIL.ADD, data),
 };
 
 export const dashboardApi = {
-    getInsight: (city = 'Pune', crop = 'Tomato') => api.get(`/dashboard/insight?city=${city}&crop=${crop}`),
+    getInsight: (city, crop) => 
+        api.get(`${API_CONFIG.ENDPOINTS.DASHBOARD}?city=${city}&crop=${crop}`),
 };
 
 export default api;

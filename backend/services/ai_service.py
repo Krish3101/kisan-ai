@@ -220,13 +220,13 @@ def format_soil(data: dict[str, Any]) -> str:
     """Format soil data for display"""
     return f"""
 🧪 **Soil Report**
-Soil Type: **{data["soil_type"]}**
-pH: **{data["ph"]}**
-Moisture: **{data["moisture"]}**
-N: **{data["nitrogen"]}**
-P: **{data["phosphorus"]}**
-K: **{data["potassium"]}**
-Last Tested: **{data["last_tested"]}**
+Soil Type: **{data.get("soil_type", "N/A")}**
+pH: **{data.get("ph", "N/A")}**
+Moisture: **{data.get("moisture", "N/A")}**
+N: **{data.get("nitrogen", "N/A")}**
+P: **{data.get("phosphorus", "N/A")}**
+K: **{data.get("potassium", "N/A")}**
+Last Tested: **{data.get("last_tested", "N/A")}**
 
 ✅ Soil looks healthy. Moderate fertilization recommended.
 """

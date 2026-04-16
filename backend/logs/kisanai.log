@@ -1,0 +1,384 @@
+2026-03-22 09:21:48 - main - INFO - KisanAI API starting up...
+2026-03-22 09:21:48 - main - INFO - KisanAI API starting up...
+2026-03-22 09:21:48 - main - INFO - Environment: development
+2026-03-22 09:21:48 - main - INFO - Environment: development
+2026-03-22 09:21:48 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 09:21:48 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 09:31:49 - main - INFO - KisanAI API starting up...
+2026-03-22 09:31:49 - main - INFO - KisanAI API starting up...
+2026-03-22 09:31:49 - main - INFO - Environment: development
+2026-03-22 09:31:49 - main - INFO - Environment: development
+2026-03-22 09:31:49 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 09:31:49 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 09:32:49 - routes.auth - INFO - New user registered successfully: ka12
+2026-03-22 09:32:49 - routes.auth - INFO - New user registered successfully: ka12
+2026-03-22 09:32:59 - routes.auth - INFO - User logged in: ka12
+2026-03-22 09:32:59 - routes.auth - INFO - User logged in: ka12
+2026-03-22 09:33:12 - routes.auth - INFO - User logged in: ka12
+2026-03-22 09:33:12 - routes.auth - INFO - User logged in: ka12
+2026-03-22 09:33:35 - routes.auth - WARNING - Registration failed: email 'krishkalya31012005@gmail.com' already exists
+2026-03-22 09:33:35 - routes.auth - WARNING - Registration failed: email 'krishkalya31012005@gmail.com' already exists
+2026-03-22 09:34:33 - routes.auth - INFO - User logged in: ka12
+2026-03-22 09:34:33 - routes.auth - INFO - User logged in: ka12
+2026-03-22 09:34:50 - routes.auth - INFO - User logged in: ka12
+2026-03-22 09:34:50 - routes.auth - INFO - User logged in: ka12
+2026-03-22 09:36:35 - routes.auth - INFO - User logged in: ka12
+2026-03-22 09:36:35 - routes.auth - INFO - User logged in: ka12
+2026-03-22 09:36:35 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 09:36:35 - routes.weather - INFO - Weather endpoint called for city: Pune
+2026-03-22 09:36:35 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 09:36:35 - routes.weather - INFO - Weather endpoint called for city: Pune
+2026-03-22 09:36:35 - services.crop_service - INFO - Fetching all crops
+2026-03-22 09:36:35 - services.crop_service - INFO - Fetching all crops
+2026-03-22 09:36:35 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 09:36:35 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 09:36:35 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 09:36:35 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 09:36:35 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 09:36:35 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 09:36:35 - routes.dashboard - INFO - Dashboard insight endpoint called for Pune, Tomato
+2026-03-22 09:36:35 - routes.dashboard - INFO - Dashboard insight endpoint called for Pune, Tomato
+2026-03-22 09:36:35 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 09:36:35 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 09:36:35 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.0.0, Profit: Rs.0.0
+2026-03-22 09:36:35 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.0.0, Profit: Rs.0.0
+2026-03-22 09:36:36 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 09:36:36 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 09:36:36 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 09:36:36 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 09:36:36 - services.price_service - INFO - Fetching price for Tomato in Maharashtra
+2026-03-22 09:36:36 - services.price_service - INFO - Fetching price for Tomato in Maharashtra
+2026-03-22 09:36:36 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 09:36:36 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 09:36:36 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 09:36:36 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 09:36:36 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 09:36:36 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 09:36:40 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 09:36:40 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 09:36:40 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 09:36:40 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 09:36:41 - routes.weather - INFO - Weather forecast endpoint called for city: Pune
+2026-03-22 09:36:41 - routes.weather - INFO - Weather forecast endpoint called for city: Pune
+2026-03-22 09:36:41 - services.weather_service - INFO - Fetching weather forecast for city: Pune
+2026-03-22 09:36:41 - services.weather_service - INFO - Fetching weather forecast for city: Pune
+2026-03-22 09:36:41 - services.weather_service - WARNING - Forecast API error for Pune: Invalid API key. Please see https://openweathermap.org/faq#error401 for more info.
+2026-03-22 09:36:41 - services.weather_service - WARNING - Forecast API error for Pune: Invalid API key. Please see https://openweathermap.org/faq#error401 for more info.
+2026-03-22 09:36:42 - routes.prices - INFO - Price endpoint called for Wheat in Maharashtra
+2026-03-22 09:36:42 - routes.prices - INFO - Price endpoint called for Wheat in Maharashtra
+2026-03-22 09:36:42 - services.price_service - INFO - Fetching price for Wheat in Maharashtra
+2026-03-22 09:36:42 - services.price_service - INFO - Fetching price for Wheat in Maharashtra
+2026-03-22 09:36:43 - routes.soil - INFO - Soil endpoint called
+2026-03-22 09:36:43 - routes.soil - INFO - Soil endpoint called
+2026-03-22 09:36:43 - services.soil_service - INFO - Fetching all soil reports
+2026-03-22 09:36:43 - services.soil_service - INFO - Fetching all soil reports
+2026-03-22 09:36:47 - routes.chatbot - INFO - Chatbot query: hi...
+2026-03-22 09:36:47 - routes.chatbot - INFO - Chatbot query: hi...
+2026-03-22 09:36:47 - services.ai_service - INFO - Processing query: hi
+2026-03-22 09:36:47 - services.ai_service - INFO - Processing query: hi
+2026-03-22 09:36:47 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 09:36:47 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 09:36:47 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 09:36:47 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 09:36:47 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 09:36:47 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 09:36:47 - services.ai_service - INFO - Detected intent: the weather looks clear for the next few days. good for spraying pesticides.
+2026-03-22 09:36:47 - services.ai_service - INFO - Detected intent: the weather looks clear for the next few days. good for spraying pesticides.
+2026-03-22 09:36:47 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 09:36:47 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 09:36:47 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 09:36:47 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 09:36:47 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 09:36:47 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 09:36:47 - services.weather_service - INFO - Fetching weather for city: I am in offline mode. Please check your internet or API key for live AI answers. Meanwhile: Farming is essential!
+2026-03-22 09:36:47 - services.weather_service - INFO - Fetching weather for city: I am in offline mode. Please check your internet or API key for live AI answers. Meanwhile: Farming is essential!
+2026-03-22 09:36:47 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 09:36:47 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 09:37:20 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 09:37:20 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 09:37:20 - services.crop_service - INFO - Fetching all crops
+2026-03-22 09:37:20 - services.crop_service - INFO - Fetching all crops
+2026-03-22 09:37:20 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 09:37:20 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 09:37:20 - services.crop_service - INFO - Fetching all crops
+2026-03-22 09:37:20 - services.crop_service - INFO - Fetching all crops
+2026-03-22 09:37:22 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 09:37:22 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 09:37:22 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 09:37:22 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 09:37:22 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 09:37:22 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 09:37:22 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 09:37:22 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 09:37:22 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.0.0, Profit: Rs.0.0
+2026-03-22 09:37:22 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.0.0, Profit: Rs.0.0
+2026-03-22 09:37:34 - routes.expenses - INFO - Adding expense: aa - Rs.222.0
+2026-03-22 09:37:34 - routes.expenses - INFO - Adding expense: aa - Rs.222.0
+2026-03-22 09:37:34 - services.expense_service - INFO - Adding expense: aa - ₹222.0
+2026-03-22 09:37:34 - services.expense_service - INFO - Adding expense: aa - ₹222.0
+2026-03-22 09:37:34 - services.expense_service - INFO - Successfully added expense: aa
+2026-03-22 09:37:34 - services.expense_service - INFO - Successfully added expense: aa
+2026-03-22 09:37:34 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 09:37:34 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 09:37:34 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 09:37:34 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 09:37:34 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 09:37:34 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 09:37:34 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 09:37:34 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 09:37:34 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.222.0, Profit: Rs.-222.0
+2026-03-22 09:37:34 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.222.0, Profit: Rs.-222.0
+2026-03-22 09:37:52 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 09:37:52 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 09:37:52 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 09:37:52 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 09:37:52 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 09:37:52 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 09:37:52 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 09:37:52 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 09:37:52 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.222.0, Profit: Rs.-222.0
+2026-03-22 09:37:52 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 09:37:52 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.222.0, Profit: Rs.-222.0
+2026-03-22 09:37:52 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 09:37:52 - services.crop_service - INFO - Fetching all crops
+2026-03-22 09:37:52 - services.crop_service - INFO - Fetching all crops
+2026-03-22 09:37:56 - routes.weather - INFO - Weather endpoint called for city: Pune
+2026-03-22 09:37:56 - routes.weather - INFO - Weather forecast endpoint called for city: Pune
+2026-03-22 09:37:56 - routes.weather - INFO - Weather endpoint called for city: Pune
+2026-03-22 09:37:56 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 09:37:56 - routes.weather - INFO - Weather forecast endpoint called for city: Pune
+2026-03-22 09:37:56 - services.weather_service - INFO - Fetching weather forecast for city: Pune
+2026-03-22 09:37:56 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 09:37:56 - services.weather_service - INFO - Fetching weather forecast for city: Pune
+2026-03-22 09:37:56 - services.weather_service - WARNING - Forecast API error for Pune: Invalid API key. Please see https://openweathermap.org/faq#error401 for more info.
+2026-03-22 09:37:56 - services.weather_service - WARNING - Forecast API error for Pune: Invalid API key. Please see https://openweathermap.org/faq#error401 for more info.
+2026-03-22 09:37:56 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 09:37:56 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 09:37:57 - routes.soil - INFO - Soil endpoint called
+2026-03-22 09:37:57 - routes.soil - INFO - Soil endpoint called
+2026-03-22 09:37:57 - services.soil_service - INFO - Fetching all soil reports
+2026-03-22 09:37:57 - services.soil_service - INFO - Fetching all soil reports
+2026-03-22 09:38:01 - routes.dashboard - INFO - Dashboard insight endpoint called for Pune, Tomato
+2026-03-22 09:38:01 - routes.dashboard - INFO - Dashboard insight endpoint called for Pune, Tomato
+2026-03-22 09:38:01 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 09:38:01 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 09:38:01 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 09:38:01 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 09:38:01 - services.price_service - INFO - Fetching price for Tomato in Maharashtra
+2026-03-22 09:38:01 - services.price_service - INFO - Fetching price for Tomato in Maharashtra
+2026-03-22 09:38:01 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 09:38:01 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 09:38:01 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 09:38:01 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 09:38:01 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 09:38:01 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 10:01:37 - main - INFO - KisanAI API starting up...
+2026-03-22 10:01:37 - main - INFO - KisanAI API starting up...
+2026-03-22 10:01:37 - main - INFO - Environment: development
+2026-03-22 10:01:37 - main - INFO - Environment: development
+2026-03-22 10:01:37 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 10:01:37 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 10:02:19 - main - INFO - KisanAI API starting up...
+2026-03-22 10:02:19 - main - INFO - KisanAI API starting up...
+2026-03-22 10:02:19 - main - INFO - Environment: development
+2026-03-22 10:02:19 - main - INFO - Environment: development
+2026-03-22 10:02:19 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 10:02:19 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 10:02:20 - main - INFO - KisanAI API shutting down...
+2026-03-22 10:02:20 - main - INFO - KisanAI API shutting down...
+2026-03-22 10:02:20 - main - INFO - KisanAI API shutting down...
+2026-03-22 10:02:20 - main - INFO - KisanAI API shutting down...
+2026-03-22 10:12:44 - main - INFO - KisanAI API starting up...
+2026-03-22 10:12:44 - main - INFO - KisanAI API starting up...
+2026-03-22 10:12:44 - main - INFO - Environment: development
+2026-03-22 10:12:44 - main - INFO - Environment: development
+2026-03-22 10:12:44 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 10:12:44 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 10:15:28 - main - INFO - KisanAI API starting up...
+2026-03-22 10:15:28 - main - INFO - KisanAI API starting up...
+2026-03-22 10:15:28 - main - INFO - Environment: development
+2026-03-22 10:15:28 - main - INFO - Environment: development
+2026-03-22 10:15:28 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 10:15:28 - main - INFO - API Keys configured: OpenWeather=True, OpenRouter=True
+2026-03-22 10:16:51 - routes.auth - INFO - User logged in: ka12
+2026-03-22 10:16:51 - routes.auth - INFO - User logged in: ka12
+2026-03-22 10:16:51 - routes.weather - INFO - Weather endpoint called for city: Pune
+2026-03-22 10:16:51 - routes.weather - INFO - Weather endpoint called for city: Pune
+2026-03-22 10:16:51 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 10:16:51 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 10:16:51 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 10:16:51 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 10:16:51 - services.crop_service - INFO - Fetching all crops
+2026-03-22 10:16:51 - services.crop_service - INFO - Fetching all crops
+2026-03-22 10:16:52 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 10:16:52 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 10:16:52 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 10:16:52 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 10:16:52 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.222.0, Profit: Rs.-222.0
+2026-03-22 10:16:52 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.222.0, Profit: Rs.-222.0
+2026-03-22 10:16:52 - routes.dashboard - INFO - Dashboard insight endpoint called for Pune, Tomato
+2026-03-22 10:16:52 - routes.dashboard - INFO - Dashboard insight endpoint called for Pune, Tomato
+2026-03-22 10:16:52 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 10:16:52 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 10:16:52 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 10:16:52 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 10:16:52 - services.price_service - INFO - Fetching price for Tomato in Maharashtra
+2026-03-22 10:16:52 - services.price_service - INFO - Fetching price for Tomato in Maharashtra
+2026-03-22 10:16:52 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 10:16:52 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 10:16:52 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 10:16:52 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 10:16:52 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 10:16:52 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 10:16:52 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 10:16:52 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 10:16:56 - routes.prices - INFO - Price endpoint called for Wheat in Maharashtra
+2026-03-22 10:16:56 - routes.prices - INFO - Price endpoint called for Wheat in Maharashtra
+2026-03-22 10:16:56 - services.price_service - INFO - Fetching price for Wheat in Maharashtra
+2026-03-22 10:16:56 - services.price_service - INFO - Fetching price for Wheat in Maharashtra
+2026-03-22 10:16:57 - routes.soil - INFO - Soil endpoint called
+2026-03-22 10:16:57 - routes.soil - INFO - Soil endpoint called
+2026-03-22 10:16:57 - services.soil_service - INFO - Fetching all soil reports
+2026-03-22 10:16:57 - services.soil_service - INFO - Fetching all soil reports
+2026-03-22 10:16:59 - routes.weather - INFO - Weather forecast endpoint called for city: Pune
+2026-03-22 10:16:59 - routes.weather - INFO - Weather forecast endpoint called for city: Pune
+2026-03-22 10:16:59 - services.weather_service - INFO - Fetching weather forecast for city: Pune
+2026-03-22 10:16:59 - services.weather_service - INFO - Fetching weather forecast for city: Pune
+2026-03-22 10:16:59 - services.weather_service - WARNING - Forecast API error for Pune: Invalid API key. Please see https://openweathermap.org/faq#error401 for more info.
+2026-03-22 10:16:59 - services.weather_service - WARNING - Forecast API error for Pune: Invalid API key. Please see https://openweathermap.org/faq#error401 for more info.
+2026-03-22 10:17:02 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 10:17:02 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 10:17:02 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 10:17:02 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 10:17:02 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 10:17:02 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 10:17:02 - services.crop_service - INFO - Fetching all crops
+2026-03-22 10:17:02 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 10:17:02 - services.crop_service - INFO - Fetching all crops
+2026-03-22 10:17:02 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.222.0, Profit: Rs.-222.0
+2026-03-22 10:17:02 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 10:17:02 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.222.0, Profit: Rs.-222.0
+2026-03-22 10:17:02 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 10:17:02 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 10:17:35 - routes.expenses - INFO - Adding expense: aa - Rs.12.0
+2026-03-22 10:17:35 - routes.expenses - INFO - Adding expense: aa - Rs.12.0
+2026-03-22 10:17:35 - services.expense_service - INFO - Adding expense: aa - ₹12.0
+2026-03-22 10:17:35 - services.expense_service - INFO - Adding expense: aa - ₹12.0
+2026-03-22 10:17:35 - services.expense_service - INFO - Successfully added expense: aa
+2026-03-22 10:17:35 - services.expense_service - INFO - Successfully added expense: aa
+2026-03-22 10:17:35 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 10:17:35 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 10:17:35 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 10:17:35 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 10:17:35 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 10:17:35 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 10:17:35 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 10:17:35 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 10:17:35 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.234.0, Profit: Rs.-234.0
+2026-03-22 10:17:35 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.234.0, Profit: Rs.-234.0
+2026-03-22 10:17:57 - routes.crops - INFO - Adding crop: whatr to plot: north
+2026-03-22 10:17:57 - routes.crops - INFO - Adding crop: whatr to plot: north
+2026-03-22 10:17:57 - services.crop_service - INFO - Adding crop: whatr to plot: north
+2026-03-22 10:17:57 - services.crop_service - INFO - Adding crop: whatr to plot: north
+2026-03-22 10:17:57 - services.crop_service - INFO - Successfully added crop: whatr
+2026-03-22 10:17:57 - services.crop_service - INFO - Successfully added crop: whatr
+2026-03-22 10:17:57 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 10:17:57 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 10:17:57 - services.crop_service - INFO - Fetching all crops
+2026-03-22 10:17:57 - services.crop_service - INFO - Fetching all crops
+2026-03-22 10:18:01 - routes.crops - INFO - Updating crop 1 to stage: Harvest Ready
+2026-03-22 10:18:01 - routes.crops - INFO - Updating crop 1 to stage: Harvest Ready
+2026-03-22 10:18:01 - services.crop_service - INFO - Updating crop 1 stage to: Harvest Ready
+2026-03-22 10:18:01 - services.crop_service - INFO - Updating crop 1 stage to: Harvest Ready
+2026-03-22 10:18:01 - services.crop_service - INFO - Successfully updated crop stage: whatr
+2026-03-22 10:18:01 - services.crop_service - INFO - Successfully updated crop stage: whatr
+2026-03-22 10:18:01 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 10:18:01 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 10:18:01 - services.crop_service - INFO - Fetching all crops
+2026-03-22 10:18:01 - services.crop_service - INFO - Fetching all crops
+2026-03-22 10:18:03 - routes.crops - INFO - Updating crop 1 to stage: Harvested
+2026-03-22 10:18:03 - routes.crops - INFO - Updating crop 1 to stage: Harvested
+2026-03-22 10:18:03 - services.crop_service - INFO - Updating crop 1 stage to: Harvested
+2026-03-22 10:18:03 - services.crop_service - INFO - Updating crop 1 stage to: Harvested
+2026-03-22 10:18:03 - services.crop_service - INFO - Successfully updated crop stage: whatr
+2026-03-22 10:18:03 - services.crop_service - INFO - Successfully updated crop stage: whatr
+2026-03-22 10:18:03 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 10:18:03 - routes.crops - INFO - Crops list endpoint called
+2026-03-22 10:18:03 - services.crop_service - INFO - Fetching all crops
+2026-03-22 10:18:03 - services.crop_service - INFO - Fetching all crops
+2026-03-22 10:18:13 - routes.expenses - INFO - Adding expense: 24 - Rs.200.0
+2026-03-22 10:18:13 - routes.expenses - INFO - Adding expense: 24 - Rs.200.0
+2026-03-22 10:18:13 - services.expense_service - INFO - Adding expense: 24 - ₹200.0 (linked to crop 1)
+2026-03-22 10:18:13 - services.expense_service - INFO - Adding expense: 24 - ₹200.0 (linked to crop 1)
+2026-03-22 10:18:13 - services.expense_service - INFO - Successfully added expense: 24
+2026-03-22 10:18:13 - services.expense_service - INFO - Successfully added expense: 24
+2026-03-22 10:18:13 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 10:18:13 - routes.expenses - INFO - Expenses list endpoint called
+2026-03-22 10:18:13 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 10:18:13 - services.expense_service - INFO - Fetching all expenses
+2026-03-22 10:18:13 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 10:18:13 - routes.expenses - INFO - Financial summary endpoint called
+2026-03-22 10:18:13 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 10:18:13 - services.expense_service - INFO - Calculating financial summary
+2026-03-22 10:18:13 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.434.0, Profit: Rs.-434.0
+2026-03-22 10:18:13 - services.expense_service - INFO - Summary - Income: Rs.0.0, Expense: Rs.434.0, Profit: Rs.-434.0
+2026-03-22 10:18:18 - routes.chatbot - INFO - Chatbot query: hi...
+2026-03-22 10:18:18 - routes.chatbot - INFO - Chatbot query: hi...
+2026-03-22 10:18:18 - services.ai_service - INFO - Processing query: hi
+2026-03-22 10:18:18 - services.ai_service - INFO - Processing query: hi
+2026-03-22 10:18:18 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 10:18:18 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 10:18:18 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 10:18:18 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 10:18:18 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 10:18:18 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 10:18:18 - services.ai_service - INFO - Detected intent: the weather looks clear for the next few days. good for spraying pesticides.
+2026-03-22 10:18:18 - services.ai_service - INFO - Detected intent: the weather looks clear for the next few days. good for spraying pesticides.
+2026-03-22 10:18:18 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 10:18:18 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 10:18:18 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 10:18:18 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 10:18:18 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 10:18:18 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 10:18:18 - services.weather_service - INFO - Fetching weather for city: I am in offline mode. Please check your internet or API key for live AI answers. Meanwhile: Farming is essential!
+2026-03-22 10:18:18 - services.weather_service - INFO - Fetching weather for city: I am in offline mode. Please check your internet or API key for live AI answers. Meanwhile: Farming is essential!
+2026-03-22 10:18:18 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 10:18:18 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 10:18:23 - routes.weather - INFO - Weather endpoint called for city: Pune
+2026-03-22 10:18:23 - routes.weather - INFO - Weather forecast endpoint called for city: Pune
+2026-03-22 10:18:23 - routes.weather - INFO - Weather endpoint called for city: Pune
+2026-03-22 10:18:23 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 10:18:23 - routes.weather - INFO - Weather forecast endpoint called for city: Pune
+2026-03-22 10:18:23 - services.weather_service - INFO - Fetching weather forecast for city: Pune
+2026-03-22 10:18:23 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 10:18:23 - services.weather_service - INFO - Fetching weather forecast for city: Pune
+2026-03-22 10:18:23 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 10:18:23 - services.weather_service - WARNING - Forecast API error for Pune: Invalid API key. Please see https://openweathermap.org/faq#error401 for more info.
+2026-03-22 10:18:23 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 10:18:23 - services.weather_service - WARNING - Forecast API error for Pune: Invalid API key. Please see https://openweathermap.org/faq#error401 for more info.
+2026-03-22 10:18:23 - routes.prices - INFO - Price endpoint called for Wheat in Maharashtra
+2026-03-22 10:18:23 - routes.prices - INFO - Price endpoint called for Wheat in Maharashtra
+2026-03-22 10:18:23 - services.price_service - INFO - Fetching price for Wheat in Maharashtra
+2026-03-22 10:18:23 - services.price_service - INFO - Fetching price for Wheat in Maharashtra
+2026-03-22 10:18:24 - routes.soil - INFO - Soil endpoint called
+2026-03-22 10:18:24 - routes.soil - INFO - Soil endpoint called
+2026-03-22 10:18:24 - services.soil_service - INFO - Fetching all soil reports
+2026-03-22 10:18:24 - services.soil_service - INFO - Fetching all soil reports
+2026-03-22 10:18:25 - routes.dashboard - INFO - Dashboard insight endpoint called for Pune, Tomato
+2026-03-22 10:18:25 - routes.dashboard - INFO - Dashboard insight endpoint called for Pune, Tomato
+2026-03-22 10:18:25 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 10:18:25 - services.weather_service - INFO - Fetching weather for city: Pune
+2026-03-22 10:18:25 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 10:18:25 - services.weather_service - ERROR - Invalid OpenWeather API key
+2026-03-22 10:18:25 - services.price_service - INFO - Fetching price for Tomato in Maharashtra
+2026-03-22 10:18:25 - services.price_service - INFO - Fetching price for Tomato in Maharashtra
+2026-03-22 10:18:26 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 10:18:26 - services.ai_service - INFO - Sending request to LLM
+2026-03-22 10:18:26 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 10:18:26 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-03-22 10:18:26 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 10:18:26 - services.ai_service - WARNING - LLM API returned status 401: {"error":{"message":"Missing Authentication header","code":401}}
+2026-03-22 10:24:08 - routes.prices - INFO - Price endpoint called for Wheat in Maharashtra
+2026-03-22 10:24:08 - routes.prices - INFO - Price endpoint called for Wheat in Maharashtra
+2026-03-22 10:24:08 - services.price_service - INFO - Fetching price for Wheat in Maharashtra
+2026-03-22 10:24:08 - services.price_service - INFO - Fetching price for Wheat in Maharashtra
